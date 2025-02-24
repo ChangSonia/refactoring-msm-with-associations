@@ -11,9 +11,6 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
-  validates(:name, presence: true)
-  has_many(:character, class_name: "Character", foreign_key: "actor_id", primary_key: "id")
-
-  has_many :filmography, through: :character, source: :movie
-  
+  has_many :characters
+  has_many :filmography, through: :characters, source: :movie
 end
